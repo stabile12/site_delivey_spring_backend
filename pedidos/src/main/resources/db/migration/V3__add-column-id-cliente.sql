@@ -1,0 +1,2 @@
+ALTER TABLE pedidos
+ADD COLUMN id_cliente BIGINT;

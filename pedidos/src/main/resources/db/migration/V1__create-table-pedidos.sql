@@ -1,0 +1,5 @@
+CREATE TABLE pedidos (
+    id SERIAL PRIMARY KEY,
+    total NUMERIC(10, 2) NOT NULL,
+    status VARCHAR(50) NOT NULL
+);
