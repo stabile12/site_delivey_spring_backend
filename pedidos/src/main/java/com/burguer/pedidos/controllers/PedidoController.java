@@ -1,6 +1,8 @@
 package com.burguer.pedidos.controllers;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,11 +31,17 @@ public class PedidoController {
   }
 
   @GetMapping("/{id}")
-  public ResponseEntity<ListarPedidoDTO> listarPedidosPorID(@PathVariable Long id) {
-    var pedidos = service.listarPedidoPorId(id);
-    return ResponseEntity.ok(pedidos);
+  public ResponseEntity<ListarPedidoDTO> listarPedidoPorID(@PathVariable Long id) {
+    var pedido = service.listarPedidoPorId(id);
+    return ResponseEntity.ok(pedido);
   }
-  
+
+  @GetMapping("/cliente/{id}")
+  public ResponseEntity<List<ListarPedidoDTO>> listarPedidosPorCliente(@PathVariable Long id) {
+    var pedidos = service.listarPedidosPorCliente(id);
+    return ResponseEntity.ok(pedidos);
+
+  }  
 
   
 }
