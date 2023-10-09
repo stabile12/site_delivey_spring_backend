@@ -57,4 +57,25 @@ public class ProdutosAMQPConfiguration {
         return BindingBuilder.bind(filaDetalhesPedidos)
                 .to(fanoutExchange);
     }
+
+    @Bean
+    public Queue filaNumeroDeCompras() {
+        return QueueBuilder
+                .durable("compras-produtos")
+                .build();
+    }
+
+    // aqui cria a exchange
+    @Bean
+    public FanoutExchange fanoutExchangeNumeroDeCompras() {
+        return ExchangeBuilder
+                .fanoutExchange("compras.ex")
+                .build();
+    }
+
+    @Bean
+    public Binding bindNumeroDeCompras(FanoutExchange fanoutExchangeNumeroDeCompras, Queue filaNumeroDeCompras) {
+        return BindingBuilder.bind(filaNumeroDeCompras)
+                .to(fanoutExchangeNumeroDeCompras);
+    }
 }

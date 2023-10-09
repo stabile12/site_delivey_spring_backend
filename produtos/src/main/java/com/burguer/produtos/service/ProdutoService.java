@@ -38,7 +38,7 @@ public class ProdutoService {
       produto.excluir();
 
     } catch (Exception e) {
-      System.out.println("deu merda");
+      System.out.println("falha em desativar produto");
     }
   }
 
@@ -66,6 +66,20 @@ public class ProdutoService {
     double avaliacao = produto.getPontos()/produto.getNumero_de_avaliacoes();
 
     return avaliacao;
+  }
+
+  @Transactional
+  public void atualizaNumeroDeCompras(List<Long> ids) {
+
+
+    for (Long id : ids) {
+      Produto produto = repository.getReferenceById(id);
+      var numero_de_compras = produto.getNumero_de_compras();
+
+      produto.setNumero_de_compras(numero_de_compras + 1);
+      System.out.println("produto: " + id);
+      System.out.println("número de compras: " + produto.getNumero_de_compras());
+    }
   }
 
 }

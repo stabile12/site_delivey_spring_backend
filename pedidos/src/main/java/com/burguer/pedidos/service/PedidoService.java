@@ -3,6 +3,7 @@ package com.burguer.pedidos.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,9 @@ import jakarta.transaction.Transactional;
 public class PedidoService {
 
   @Autowired
+  private RabbitTemplate rabbitTemplate;
+
+  @Autowired
   private PedidoRepository pedidoRepository;
 
   @Autowired
@@ -31,6 +35,14 @@ public class PedidoService {
     Long id_cliente = dto.id_cliente();
     List<ItemPedidoDTO> produtos = dto.produtos();
     double total = 0;
+    List<Long> ids_produtos = new ArrayList<>();
+    
+
+    for (ItemPedidoDTO produto : produtos) {
+      ids_produtos.add(produto.id_produto());
+    }
+
+    rabbitTemplate.convertAndSend("compras.ex", "", ids_produtos);
 
     for (ItemPedidoDTO produto : produtos) {
       total += produto.preco();

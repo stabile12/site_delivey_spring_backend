@@ -43,8 +43,10 @@ public class ProdutoController {
 
   @DeleteMapping("/{id}")
   @Transactional
-  public void deletarProduto(@PathVariable Long id) {
+  public ResponseEntity<Long> deletarProduto(@PathVariable Long id) {
     service.deletarProduto(id);
+
+    return ResponseEntity.noContent().build();
   }
 
   @PutMapping
@@ -53,5 +55,6 @@ public class ProdutoController {
     service.atualizarProduto(dto);
     return ResponseEntity.ok(dto);
   }
+
 
 }
