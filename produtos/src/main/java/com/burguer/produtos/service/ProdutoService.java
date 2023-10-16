@@ -71,7 +71,6 @@ public class ProdutoService {
   @Transactional
   public void atualizaNumeroDeCompras(List<Long> ids) {
 
-
     for (Long id : ids) {
       Produto produto = repository.getReferenceById(id);
       var numero_de_compras = produto.getNumero_de_compras();

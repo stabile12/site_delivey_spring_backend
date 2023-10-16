@@ -44,7 +44,6 @@ public class ProdutosAMQPConfiguration {
                 .build();
     }
 
-    // aqui cria a exchange
     @Bean
     public FanoutExchange fanoutExchange() {
         return ExchangeBuilder
@@ -65,7 +64,6 @@ public class ProdutosAMQPConfiguration {
                 .build();
     }
 
-    // aqui cria a exchange
     @Bean
     public FanoutExchange fanoutExchangeNumeroDeCompras() {
         return ExchangeBuilder

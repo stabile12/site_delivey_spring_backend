@@ -14,12 +14,9 @@ import com.burguer.user.models.Usuario;
 
 @Service
 public class TokenService {
-
-
-  // método pra criar o token né
+  
   public String generateToken(Usuario usuario) {
     try {
-      // isso é a chave para criptografar e descriptografar o token
       Algorithm algorithm = Algorithm.HMAC256("my-secret");
       String token = JWT.create()
           .withIssuer("auth-ms")
@@ -33,7 +30,6 @@ public class TokenService {
     }
   }
 
-  // isso só gera o tempo de expiração que vai ser passado para o token
   private Instant generateExpirationDate() {
     return LocalDateTime.now().plusHours(2).toInstant(ZoneOffset.of("-03:00"));
   }

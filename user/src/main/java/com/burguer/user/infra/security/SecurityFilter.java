@@ -25,7 +25,7 @@ public class SecurityFilter extends OncePerRequestFilter{
   @Autowired
   UsuarioRepository repository;
 
-  //filtro que vai ser usado no SecurityConfigurations
+
   @Override
   protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
       throws ServletException, IOException {
