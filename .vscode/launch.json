@@ -1,0 +1,51 @@
+{
+  "configurations": [
+    {
+      "type": "java",
+      "name": "ProdutosApplication",
+      "request": "launch",
+      "mainClass": "com.burguer.produtos.ProdutosApplication",
+      "projectName": "produtos"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-ServerApplication<server>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.burguer.server.ServerApplication",
+      "projectName": "server",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-GatewayApplication<gateway>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.burguer.gateway.GatewayApplication",
+      "projectName": "gateway",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-UserApplication<user>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.burguer.user.UserApplication",
+      "projectName": "user",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-PedidosApplication<pedidos>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.burguer.pedidos.PedidosApplication",
+      "projectName": "pedidos",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

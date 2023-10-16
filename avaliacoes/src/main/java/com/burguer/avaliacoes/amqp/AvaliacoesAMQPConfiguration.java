@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class AvaliacoesAMQPConfiguration {
-
+ 
     @Bean
     public RabbitAdmin criaRabbitAdmin(ConnectionFactory conn) {
         return new RabbitAdmin(conn);
