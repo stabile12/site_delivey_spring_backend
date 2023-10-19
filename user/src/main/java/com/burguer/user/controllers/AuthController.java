@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.burguer.user.DTO.AuthDTO;
+import com.burguer.user.DTO.LoginDTO;
 import com.burguer.user.DTO.RegistroDTO;
 import com.burguer.user.DTO.TokenDTO;
 import com.burguer.user.infra.security.TokenService;
@@ -32,7 +32,7 @@ public class AuthController {
   private TokenService tokenService;
 
   @PostMapping("/login")
-  public ResponseEntity<String> login(@RequestBody AuthDTO data) {
+  public ResponseEntity<String> login(@RequestBody LoginDTO data) {
     
     var usernamePassword = new UsernamePasswordAuthenticationToken(data.email(), data.senha());
 

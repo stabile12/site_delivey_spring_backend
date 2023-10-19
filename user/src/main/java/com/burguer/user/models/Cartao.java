@@ -1,5 +1,7 @@
 package com.burguer.user.models;
 
+import com.burguer.user.DTO.SalvarCartaoDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -31,4 +33,12 @@ public class Cartao {
   private String cvv;
 
   private String nome_cliente;
+
+  public Cartao(SalvarCartaoDTO dto) {
+    this.id_cliente = dto.id_cliente();
+    this.numero = dto.numero();
+    this.validade = dto.validade();
+    this.cvv = dto.cvv();
+    this.nome_cliente = dto.nome_cliente();
+  }
 }

@@ -1,6 +1,6 @@
 package com.burguer.user.DTO;
 
-public record AuthDTO(
+public record LoginDTO(
   String email,
   String senha
 ) {
