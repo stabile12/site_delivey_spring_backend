@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.burguer.user.DTO.LoginDTO;
 import com.burguer.user.DTO.RegistroDTO;
-import com.burguer.user.DTO.TokenDTO;
 import com.burguer.user.infra.security.TokenService;
 import com.burguer.user.models.Usuario;
 import com.burguer.user.repository.UsuarioRepository;
@@ -63,14 +62,14 @@ public class AuthController {
   }
 
   @PostMapping("/validar-token")
-  public ResponseEntity<String> validarToken(@RequestBody TokenDTO dto) {
-    String subject = tokenService.validateToken(dto.token());
+  public ResponseEntity<Boolean> validarToken(@RequestBody String token) {
+    String subject = tokenService.validateToken(token);
 
     if (!subject.isEmpty()) {
-      return ResponseEntity.ok().body("Token válido para o usuário: " + subject);
+      return ResponseEntity.ok().body(true);
     } else {
       
-      return ResponseEntity.badRequest().body("Token inválido");
+      return ResponseEntity.badRequest().body(false);
     }
   }
 

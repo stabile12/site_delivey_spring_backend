@@ -15,7 +15,8 @@
       "mainClass": "com.burguer.server.ServerApplication",
       "projectName": "server",
       "args": "",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54256 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=server"
     },
     {
       "type": "java",
@@ -25,7 +26,8 @@
       "mainClass": "com.burguer.gateway.GatewayApplication",
       "projectName": "gateway",
       "args": "",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54273 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=gateway"
     },
     {
       "type": "java",
@@ -35,7 +37,8 @@
       "mainClass": "com.burguer.user.UserApplication",
       "projectName": "user",
       "args": "",
-      "envFile": "${workspaceFolder}/.env"
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54284 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=user"
     },
     {
       "type": "java",
@@ -44,6 +47,17 @@
       "cwd": "${workspaceFolder}",
       "mainClass": "com.burguer.pedidos.PedidosApplication",
       "projectName": "pedidos",
+      "args": "",
+      "envFile": "${workspaceFolder}/.env",
+      "vmArgs": " -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=54482 -Dcom.sun.management.jmxremote.authenticate=false -Dcom.sun.management.jmxremote.ssl=false -Dspring.jmx.enabled=true -Djava.rmi.server.hostname=localhost -Dspring.application.admin.enabled=true -Dspring.boot.project.name=pedidos"
+    },
+    {
+      "type": "java",
+      "name": "Spring Boot-AvaliacoesApplication<avaliacoes>",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "mainClass": "com.burguer.avaliacoes.AvaliacoesApplication",
+      "projectName": "avaliacoes",
       "args": "",
       "envFile": "${workspaceFolder}/.env"
     }

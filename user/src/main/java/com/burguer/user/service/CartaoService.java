@@ -1,11 +1,9 @@
 package com.burguer.user.service;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.burguer.user.DTO.ListarCartoesDTO;
 import com.burguer.user.DTO.SalvarCartaoDTO;
 import com.burguer.user.models.Cartao;
 import com.burguer.user.repository.CartaoRepository;

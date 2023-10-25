@@ -38,9 +38,8 @@ public class PedidoController {
 
   @GetMapping("/cliente/{id}")
   public ResponseEntity<List<ListarPedidoDTO>> listarPedidosPorCliente(@PathVariable Long id) {
-    var pedidos = service.listarPedidosPorCliente(id);
-    return ResponseEntity.ok(pedidos);
-
+      var pedidos = service.listarPedidosPorCliente(id);
+      return ResponseEntity.ok(pedidos);
   }  
 
   
