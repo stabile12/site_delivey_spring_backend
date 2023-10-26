@@ -30,6 +30,7 @@ public class SecurityConfigurations {
             .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
             .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
             .requestMatchers(HttpMethod.POST, "/auth/validar-token").permitAll()
+            .requestMatchers(HttpMethod.POST, "/auth/checar-role").permitAll()
             .anyRequest().authenticated()
             )
         //esse filtro é adicionado antes das verificações acima

@@ -73,4 +73,16 @@ public class AuthController {
     }
   }
 
+  @PostMapping("/checar-role")
+  public ResponseEntity<Boolean> checarPermissao(@RequestBody String token) {
+    String role = tokenService.checkRole(token);
+    System.out.println(role);
+
+    if(role.equals("admin")) {
+      return ResponseEntity.ok().body(true);
+    } else {
+      return ResponseEntity.status(401).body(false);
+    }
+  } 
+
 }

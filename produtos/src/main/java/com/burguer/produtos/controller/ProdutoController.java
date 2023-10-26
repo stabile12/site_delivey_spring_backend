@@ -27,21 +27,21 @@ public class ProdutoController {
   @Autowired
   private ProdutoService service;
   
-  @PostMapping
+  @PostMapping("/criar")
   public ResponseEntity<ProdutoDto> criar(@RequestBody  ProdutoDto dto) {
     ProdutoDto produto = service.criaProduto(dto);
 
     return ResponseEntity.ok(produto);
   }
 
-  @GetMapping
+  @GetMapping("/listar")
   public ResponseEntity<List<Produto>> listar() {
     List<Produto> produtos = service.listar();
 
     return ResponseEntity.ok(produtos);
   }
 
-  @DeleteMapping("/{id}")
+  @DeleteMapping("/deletar/{id}")
   @Transactional
   public ResponseEntity<Long> deletarProduto(@PathVariable Long id) {
     service.deletarProduto(id);
@@ -49,7 +49,7 @@ public class ProdutoController {
     return ResponseEntity.noContent().build();
   }
 
-  @PutMapping
+  @PutMapping("/atualizar")
   @Transactional
   public ResponseEntity<AtualizarProdutoDTO> atualizarProduto(@RequestBody AtualizarProdutoDTO dto) {
     service.atualizarProduto(dto);
