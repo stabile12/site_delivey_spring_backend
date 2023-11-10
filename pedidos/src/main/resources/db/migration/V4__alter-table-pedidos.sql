@@ -1,0 +1,1 @@
+alter table pedidos add feito_em timestamp;

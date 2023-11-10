@@ -1,6 +1,11 @@
 package com.burguer.pedidos.amqp;
 
+import org.springframework.amqp.core.Binding;
+import org.springframework.amqp.core.BindingBuilder;
+import org.springframework.amqp.core.ExchangeBuilder;
 import org.springframework.amqp.core.FanoutExchange;
+import org.springframework.amqp.core.Queue;
+import org.springframework.amqp.core.QueueBuilder;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
 import org.springframework.amqp.rabbit.core.RabbitAdmin;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -37,7 +42,28 @@ public class PedidosAMQPConfiguration {
   }
 
   @Bean
-    public FanoutExchange fanoutExchange() {
-        return new FanoutExchange("compras.ex");
-    }
+  public FanoutExchange fanoutExchange() {
+    return new FanoutExchange("compras.ex");
+  }
+
+  @Bean
+  public Queue filaStatusPedido() {
+    return QueueBuilder
+        .durable("status-pedido")
+        .build();
+  }
+
+  @Bean
+  public FanoutExchange fanoutExchangeStatuspedido() {
+    return ExchangeBuilder
+        .fanoutExchange("status.ex")
+        .build();
+  }
+
+  @Bean
+  public Binding bindStatusPedido(FanoutExchange fanoutExchangeStatuspedido, Queue filaStatusPedido) {
+    return BindingBuilder.bind(filaStatusPedido)
+        .to(fanoutExchangeStatuspedido);
+  }
+
 }

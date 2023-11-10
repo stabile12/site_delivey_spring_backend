@@ -1,0 +1,1 @@
+alter table pagamentos add feito_em timestamp;

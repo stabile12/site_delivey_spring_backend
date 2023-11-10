@@ -1,5 +1,6 @@
 package com.burguer.pedidos.service;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,6 +53,7 @@ public class PedidoService {
     pedido.setId_cliente(id_cliente);
     pedido.setTotal(total);
     pedido.setStatus(Status.AGUARDANDO);
+    pedido.setFeito_em(LocalDateTime.now());
 
     pedidoRepository.save(pedido);
 

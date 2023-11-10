@@ -1,9 +1,10 @@
 package com.burguer.user.DTO;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public record SalvarCartaoDTO(
-  @NotBlank
+  @NotNull
   Long id_cliente,
   @NotBlank
   String numero,

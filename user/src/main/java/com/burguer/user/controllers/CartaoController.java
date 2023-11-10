@@ -16,6 +16,7 @@ import com.burguer.user.DTO.SalvarCartaoDTO;
 import com.burguer.user.service.CartaoService;
 
 import jakarta.transaction.Transactional;
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/card")
@@ -23,13 +24,18 @@ public class CartaoController {
 
   @Autowired
   CartaoService service;
-
+           
   @PostMapping
   @Transactional
-  public ResponseEntity<SalvarCartaoDTO> salvarCartao(@RequestBody SalvarCartaoDTO dto) {
-    service.salvarCartao(dto);
-    
-    return ResponseEntity.ok(dto);
+  public ResponseEntity<SalvarCartaoDTO> salvarCartao(@RequestBody @Valid SalvarCartaoDTO dto) {
+    try {     
+      service.salvarCartao(dto);
+      
+      return ResponseEntity.ok(dto);
+
+    } catch (Exception e) {
+      return ResponseEntity.status(400).build();
+    }
 
   }
 

@@ -1,6 +1,8 @@
-package com.burguer.pedidos.models;
+package com.burguer.pagamentos.models;
 
 import java.time.LocalDateTime;
+
+import com.burguer.pagamentos.DTOs.PagamentoDTO;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,24 +15,32 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "pedidos")
-@Getter
+@Table(name = "pagamentos")
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pedido {
-
+public class Pagamento {
+  
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  private Long id_pagamento;
 
   private Long id_cliente;
 
-  private double total;
+  private Long id_pedido;
 
-  private Status status;
+  private String cpf_cliente;
+
+  private double valor;
 
   private LocalDateTime feito_em;
 
-  
+  public Pagamento(PagamentoDTO dto) {
+    this.id_cliente = dto.id_cliente();
+    this.id_pedido = dto.id_pedido();
+    this.cpf_cliente = dto.cpf_cliente();
+    this.valor = dto.valor();
+    this.feito_em = LocalDateTime.now();
+  }
 }

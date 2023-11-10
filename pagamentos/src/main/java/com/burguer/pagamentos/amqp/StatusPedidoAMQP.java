@@ -1,4 +1,4 @@
-package com.burguer.avaliacoes.amqp;
+package com.burguer.pagamentos.amqp;
 
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.connection.ConnectionFactory;
@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-public class AvaliacoesAMQPConfiguration {
+public class StatusPedidoAMQP {
 
     @Bean
     public RabbitAdmin criaRabbitAdmin(ConnectionFactory conn) {
@@ -39,6 +39,6 @@ public class AvaliacoesAMQPConfiguration {
 
     @Bean
     public FanoutExchange fanoutExchange() {
-        return new FanoutExchange("avaliacoes.ex");
+        return new FanoutExchange("status.ex");
     }
 }

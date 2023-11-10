@@ -1,4 +1,4 @@
-package com.burguer.pedidos.http;
+package com.burguer.pagamentos.http;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
