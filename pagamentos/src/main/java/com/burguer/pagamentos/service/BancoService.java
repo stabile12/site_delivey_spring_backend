@@ -16,10 +16,14 @@ public class BancoService {
   
   public Boolean recebeDadosCartao(RequisicaoPagamentoDTO dto) throws IOException, InterruptedException {
     String uri = "http://localhost:8083/check";
+
     System.out.println("dto que é enviado para a requisicao " + dto);
+
     var response = requisicaoBancaria.dispararRequisicaoPost(uri, dto);
+
     System.out.println(dto);
     System.out.println(response);
+
     if (response.statusCode() == 200) {
       System.out.println("Requisição bem-sucedida");
       return true;
@@ -28,7 +32,5 @@ public class BancoService {
       System.out.println("Falha na requisição");
       return false;
     }
-    
-    
   }
 }
