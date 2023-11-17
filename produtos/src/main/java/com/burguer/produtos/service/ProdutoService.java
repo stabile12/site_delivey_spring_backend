@@ -50,6 +50,7 @@ public class ProdutoService {
       produto.setPreco(dto.preco());
       produto.setDescricao(dto.descricao());
       produto.setCategoria(dto.categoria());
+      repository.save(produto);
       return dto;
   }
 

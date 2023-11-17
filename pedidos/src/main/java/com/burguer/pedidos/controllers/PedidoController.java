@@ -1,6 +1,5 @@
 package com.burguer.pedidos.controllers;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,7 +39,21 @@ public class PedidoController {
   public ResponseEntity<List<ListarPedidoDTO>> listarPedidosPorCliente(@PathVariable Long id) {
       var pedidos = service.listarPedidosPorCliente(id);
       return ResponseEntity.ok(pedidos);
-  }  
+  }
+  
+  // endpoint deve ser acessado somente por admins
+  @GetMapping("/{id}/enviado")
+  public ResponseEntity<String> atualizaStatusEnviado(@PathVariable Long id) {
+    String resposta = service.atualizaStatusPedidoEnviado(id);
+    return ResponseEntity.ok().body(resposta);
+  }
+
+  // endpoint deve ser acessado somente por admins
+  @GetMapping("/{id}/entregue")
+  public ResponseEntity<String> atualizaStatusEntregue(@PathVariable Long id) {
+    String resposta = service.atualizaStatusPedidoEntregue(id);
+    return ResponseEntity.ok().body(resposta);
+  }
 
   
 }

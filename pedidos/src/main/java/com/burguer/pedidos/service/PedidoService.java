@@ -99,6 +99,47 @@ public class PedidoService {
     }
     
     return lista;
-    
+  }
+
+  public String atualizaStatusPedidoConfirmado(Long id) {
+    try {
+      var pedido = pedidoRepository.findById(id).get();
+
+      pedido.setStatus(Status.CONFIRMADO);
+
+      pedidoRepository.save(pedido);
+
+      return "Status Atualizado para CONFIRMADO";
+    } catch (Exception e) {
+      return "Falha ao atualizar! - " + e.getMessage();
+    }
+  }
+
+  public String atualizaStatusPedidoEnviado(Long id) {
+    try {
+      var pedido = pedidoRepository.findById(id).get();
+
+      pedido.setStatus(Status.ENVIADO);
+
+      pedidoRepository.save(pedido);
+
+      return "Status Atualizado para ENVIADO";
+    } catch (Exception e) {
+      return "Falha ao atualizar! - " + e.getMessage();
+    }
+  }
+
+  public String atualizaStatusPedidoEntregue(Long id) {
+    try {
+      var pedido = pedidoRepository.findById(id).get();
+
+      pedido.setStatus(Status.ENTREGUE);
+
+      pedidoRepository.save(pedido);
+
+      return "Status Atualizado para ENTREGUE";
+    } catch (Exception e) {
+      return "Falha ao atualizar! - " + e.getMessage();
+    }
   }
 }

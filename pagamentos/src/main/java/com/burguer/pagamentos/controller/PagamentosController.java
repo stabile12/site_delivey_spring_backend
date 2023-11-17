@@ -30,14 +30,18 @@ public class PagamentosController {
 
   @PostMapping
   public ResponseEntity<Object> receberPagamento(@RequestBody DadosWrapperDTO dto) throws IOException, InterruptedException {
+    
     RequisicaoPagamentoDTO requisicaoPagamentoDTO = dto.cartaoDTO();
     var requisicao = bancoService.recebeDadosCartao(requisicaoPagamentoDTO);
 
     if (requisicao) {
+
       pagamentoService.salvarPagamento(dto.pagamentoDTO());
 
       rabbitTemplate.convertAndSend("status.ex", "", dto.pagamentoDTO().id_pedido());
+
       return ResponseEntity.ok(dto.pagamentoDTO());
+
     }else {
       return ResponseEntity.badRequest().body("Falha ao processar pagamento!");
     }
